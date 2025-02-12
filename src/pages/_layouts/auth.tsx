@@ -11,7 +11,7 @@ export function AuthLayout() {
           className="flex w-44 items-center gap-2 text-lg text-foreground"
         >
           <Bird className="h-6 w-6" />
-          <span className="font-semibold">Corujice</span>
+          <span className="font-semibold">Junior</span>
         </NavLink>
         <footer className="text-sm">
           Painel de Vendas &copy; Junior - {new Date().getFullYear()}

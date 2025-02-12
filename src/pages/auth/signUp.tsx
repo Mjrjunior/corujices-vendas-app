@@ -68,6 +68,7 @@ export function SignUp() {
               <Input
                 id="password"
                 placeholder="Senha"
+                type="password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
