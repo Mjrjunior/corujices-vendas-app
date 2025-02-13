@@ -2,15 +2,22 @@ import { Button } from "@/components/ui/button";
 import { TableCell, TableRow } from "@/components/ui/table";
 import { api } from "@/services/api";
 import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export function ProductsBody() {
   const [products, setProducts] = useState([]);
+  const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    api.get("/products").then((response) => {
+    const name = searchParams.get("name");
+    const fetchProducts = async () => {
+      const response = await api.get(`/products`, {
+        params: { name },
+      });
       setProducts(response.data);
-    });
-  }, []);
+    };
+    fetchProducts();
+  }, [searchParams]);
 
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat("pt-BR", {
