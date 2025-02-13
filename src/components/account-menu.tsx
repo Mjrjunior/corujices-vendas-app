@@ -24,9 +24,9 @@ export function AccountMenu() {
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          className="flex select-none items-center gap-2"
+          className="flex select-none items-center gap-2 font-mono font-bold"
         >
-          {data.name}
+          {(data.name)}
           <ChevronDown className="h-4 w-4" />
         </Button>
       </DropdownMenuTrigger>
@@ -43,11 +43,8 @@ export function AccountMenu() {
           <Building className="mr-2 h-4 w-4" />
           <span>Perfil da loja</span>
         </DropdownMenuItem>
-        <DropdownMenuItem className="text-rose-500 dark:text-rose-400">
-          <button
-            onClick={handleLogout}
-            className="flex items-center gap-2 w-full"
-          >
+        <DropdownMenuItem asChild className="text-rose-500 dark:text-rose-400">
+          <button className="w-full" onClick={handleLogout}>
             <LogOut className="mr-2 h-4 w-4" />
             <span>Sair</span>
           </button>
