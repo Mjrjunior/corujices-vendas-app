@@ -1,46 +1,47 @@
+import { FilterForm } from "@/components/filter-form";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogTrigger } from "@/components/ui/dialog";
-import { ProductsCreate } from "./products-create";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { FilterForm } from "@/components/filter-form";
+import { OrdersCreate } from "./orders-create";
 
-export function ProductsFilter() {
+export function OrdersFilter() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [product, setProduct] = useState("");
+  const [order, setOrder] = useState("");
 
   useEffect(() => {
-    const name = searchParams.get("name");
-    if (name) {
-      setProduct(name);
+    const clientName = searchParams.get("clientName");
+    if (clientName) {
+      setOrder(clientName);
     }
   }, [searchParams]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    setSearchParams({ name: product });
+    setSearchParams({ clientName: order });
   };
 
   const handleClear = () => {
     setSearchParams({});
-    setProduct("");
+    setOrder("");
   };
+
   return (
     <div className="flex justify-between">
       <FilterForm
-        value={product}
-        setValue={setProduct}
+        value={order}
+        setValue={setOrder}
         handleSubmit={handleSubmit}
         handleClear={handleClear}
-        placeholder="Nome do produto"
+        placeholder="Nome do cliente"
       />
       <Dialog>
         <DialogTrigger asChild>
           <Button variant="outline" size="sm" type="button">
-            Adicionar Produto
+            Adicionar Pedido
           </Button>
         </DialogTrigger>
-        <ProductsCreate />
+        <OrdersCreate />
       </Dialog>
     </div>
   );

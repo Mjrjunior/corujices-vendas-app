@@ -27,7 +27,7 @@ export function SignIn() {
 
       if (response.status === 201) {
         localStorage.setItem("token", response.data.access_token);
-        navigate("/products");
+        navigate("/");
       } else {
         console.log("Erro ao fazer login");
       }
