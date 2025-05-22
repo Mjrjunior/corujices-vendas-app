@@ -96,7 +96,7 @@ export function OrdersCreate() {
 
       if (response.status === 201) {
         console.log("Pedido criado com sucesso");
-        // window.location.reload();
+        window.location.reload();
       } else {
         console.log("Erro ao criar pedido");
       }
